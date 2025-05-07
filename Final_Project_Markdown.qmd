@@ -188,5 +188,20 @@ Chi-square test:
 #| message: false
 #| warning: false
 
+chi_result <- chisq.test(chi_data$n)
+chi_result
+
+expected_proportions <- c(
+  dawn = 2/24,
+  day = 10/24,
+  dusk = 2/24,
+  night = 10/24
+)
+chi_data <- chi_data |> arrange(time_of_day)
+
+chi_custom <- chisq.test(x = chi_data$n, p = expected_proportions)
+
+chi_custom
+
 ```
 
